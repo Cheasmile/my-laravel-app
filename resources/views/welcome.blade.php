@@ -3,816 +3,520 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BizNews - Free News Website Template</title>
+    <title>KOPPEE - Coffee Shop HTML Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
-    <!-- Google Web Fonts -->
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid d-none d-lg-block">
-        <div class="row align-items-center bg-dark px-lg-5">
-            <div class="col-lg-9">
-                <nav class="navbar navbar-expand-sm bg-dark p-0">
-                    <ul class="navbar-nav ml-n2">
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Monday, January 1, 2045</a>
-                        </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Advertise</a>
-                        </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body small" href="{{ route('login') }}">Login</a>
-
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="col-lg-3 text-right d-none d-md-block">
-                <nav class="navbar navbar-expand-sm bg-dark p-0">
-                    <ul class="navbar-nav ml-auto mr-n2">
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-twitter"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-facebook-f"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-linkedin-in"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-instagram"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-google-plus-g"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-youtube"></small></a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="row align-items-center bg-white py-3 px-lg-5">
-            <div class="col-lg-4">
-                <a href="index.html" class="navbar-brand p-0 d-none d-lg-block">
-                    <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span class="text-secondary font-weight-normal">News</span></h1>
-                </a>
-            </div>
-            <div class="col-lg-8 text-center text-lg-right">
-                <a href="https://htmlcodex.com/downloading/?item=1541"><img class="img-fluid" src="img/ads-728x90.png" alt=""></a>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
-
-
     <!-- Navbar Start -->
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span class="text-white font-weight-normal">News</span></h1>
+    <div class="container-fluid p-0 nav-bar">
+        <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
+            <a href="index.html" class="navbar-brand px-lg-4 m-0">
+                <h1 class="m-0 display-4 text-uppercase text-white">KOPPEE</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="#" class="nav-item nav-link">Category</a>
-                    <a href="#" class="nav-item nav-link">Single News</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="#" class="dropdown-item">Menu item 1</a>
-                            <a href="#" class="dropdown-item">Menu item 2</a>
-                            <a href="#" class="dropdown-item">Menu item 3</a>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto p-4">
+                        <a href="{{ url('/') }}" class="nav-item nav-link active">Home</a>
+                        <a href="{{url('/about')}}" class="nav-item nav-link">About</a>
+                        <a href="{{ url('/service') }}" class="nav-item nav-link">Service</a>
+                        <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto py-0">
+
+
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                        Menu
+                                    </a>
+
+                                    <div class="dropdown-menu">
+                                        @foreach(\App\Models\Category::all() as $category)
+                                            <a class="dropdown-item" href="{{ route('category.show', $category->id) }}">
+                                                {{ $category->name }}
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+
+                                <a href="{{ url('/contact') }}" class="nav-item nav-link">Contact</a>
+                            </div>
                         </div>
-                    </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
-                </div>
-                <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
-                    <input type="text" class="form-control border-0" placeholder="Keyword">
-                    <div class="input-group-append">
-                        <button class="input-group-text bg-primary text-dark border-0 px-3"><i
-                                class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </div>
         </nav>
     </div>
     <!-- Navbar End -->
 
-
-    <!-- Main News Slider Start -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-7 px-0">
-                <div class="owl-carousel main-carousel position-relative">
-                    <div class="position-relative overflow-hidden" style="height: 500px;">
-                        <img class="img-fluid h-100" src="img/news-800x500-1.jpg" style="object-fit: cover;">
-                        <div class="overlay">
-                            <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Business</a>
-                                <a class="text-white" href="">Jan 01, 2045</a>
-                            </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                        </div>
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div id="blog-carousel" class="carousel slide overlay-bottom" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h2 class="text-primary font-weight-medium m-0">We Have Been Serving</h2>
+                        <h1 class="display-1 text-white m-0">COFFEE</h1>
+                        <h2 class="text-white m-0">* SINCE 1950 *</h2>
                     </div>
-                    <div class="position-relative overflow-hidden" style="height: 500px;">
-                        <img class="img-fluid h-100" src="img/news-800x500-2.jpg" style="object-fit: cover;">
-                        <div class="overlay">
-                            <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Business</a>
-                                <a class="text-white" href="">Jan 01, 2045</a>
-                            </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                        </div>
-                    </div>
-                    <div class="position-relative overflow-hidden" style="height: 500px;">
-                        <img class="img-fluid h-100" src="img/news-800x500-3.jpg" style="object-fit: cover;">
-                        <div class="overlay">
-                            <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Business</a>
-                                <a class="text-white" href="">Jan 01, 2045</a>
-                            </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                        </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h2 class="text-primary font-weight-medium m-0">We Have Been Serving</h2>
+                        <h1 class="display-1 text-white m-0">COFFEE</h1>
+                        <h2 class="text-white m-0">* SINCE 1950 *</h2>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 px-0">
-                <div class="row mx-0">
-                    <div class="col-md-6 px-0">
-                        <div class="position-relative overflow-hidden" style="height: 250px;">
-                            <img class="img-fluid w-100 h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
-                            <div class="overlay">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href="">Business</a>
-                                    <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 px-0">
-                        <div class="position-relative overflow-hidden" style="height: 250px;">
-                            <img class="img-fluid w-100 h-100" src="img/news-700x435-2.jpg" style="object-fit: cover;">
-                            <div class="overlay">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href="">Business</a>
-                                    <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 px-0">
-                        <div class="position-relative overflow-hidden" style="height: 250px;">
-                            <img class="img-fluid w-100 h-100" src="img/news-700x435-3.jpg" style="object-fit: cover;">
-                            <div class="overlay">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href="">Business</a>
-                                    <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 px-0">
-                        <div class="position-relative overflow-hidden" style="height: 250px;">
-                            <img class="img-fluid w-100 h-100" src="img/news-700x435-4.jpg" style="object-fit: cover;">
-                            <div class="overlay">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href="">Business</a>
-                                    <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a class="carousel-control-prev" href="#blog-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#blog-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
         </div>
     </div>
-    <!-- Main News Slider End -->
+    <!-- Carousel End -->
 
 
-    <!-- Breaking News Start -->
-    <div class="container-fluid bg-dark py-3 mb-3">
-        <div class="container">
-            <div class="row align-items-center bg-dark">
-                <div class="col-12">
-                    <div class="d-flex justify-content-between">
-                        <div class="bg-primary text-dark text-center font-weight-medium py-2" style="width: 170px;">Breaking News</div>
-                        <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3"
-                            style="width: calc(100% - 170px); padding-right: 90px;">
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breaking News End -->
-
-
-    <!-- Featured News Slider Start -->
-    <div class="container-fluid pt-5 mb-3">
+    <!-- About Start -->
+    <div class="container-fluid py-5">
         <div class="container">
             <div class="section-title">
-                <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h4>
+                <h1 class="display-4">Serving Since 1950</h1>
             </div>
-            <div class="owl-carousel news-carousel carousel-item-4 position-relative">
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="img/news-700x435-2.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="img/news-700x435-3.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="img/news-700x435-4.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="img/news-700x435-5.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Featured News Slider End -->
-
-
-    <!-- News With Sidebar Start -->
-    <div class="container-fluid">
-        <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-12">
+                <div class="col-lg-4 py-0 py-lg-5">
+                    <h1 class="mb-3">Our Story</h1>
+                    <h5 class="mb-3">Eos kasd eos dolor vero vero, lorem stet diam rebum. Ipsum amet sed vero dolor sea
+                    </h5>
+                    <p>Takimata sed vero vero no sit sed, justo clita duo no duo amet et, nonumy kasd sed dolor eos diam
+                        lorem eirmod. Amet sit amet amet no. Est nonumy sed labore eirmod sit magna. Erat at est justo
+                        sit ut. Labor diam sed ipsum et eirmod</p>
+                    <a href="" class="btn btn-secondary font-weight-bold py-2 px-4 mt-2">Learn More</a>
+                </div>
+                <div class="col-lg-4 py-5 py-lg-0" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="img/about.png" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-4 py-0 py-lg-5">
+                    <h1 class="mb-3">Our Vision</h1>
+                    <p>Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
+                        ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
+                        dolor</p>
+                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet</h5>
+                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet</h5>
+                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet</h5>
+                    <a href="" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Service Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Our Services</h4>
+                <h1 class="display-4">Fresh & Organic Beans</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-1.jpg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-truck service-icon"></i>Fastest Door Delivery</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor
+                                sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-2.jpg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-coffee service-icon"></i>Fresh Coffee Beans</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor
+                                sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-3.jpg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-award service-icon"></i>Best Quality Coffee</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor
+                                sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-4.jpg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-table service-icon"></i>Online Table Booking</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor
+                                sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+    <!-- Offer Start -->
+
+    <!-- Offer End -->
+
+
+    <!-- Menu Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Menu & Pricing</h4>
+                <h1 class="display-4">Competitive Pricing</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="mb-5">Hot Coffee</h1>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-1.jpg" alt="">
+                            <h5 class="menu-price">$5</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Black Coffee</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-2.jpg" alt="">
+                            <h5 class="menu-price">$7</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Chocolete Coffee</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-3.jpg" alt="">
+                            <h5 class="menu-price">$9</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Coffee With Milk</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="mb-5">Cold Coffee</h1>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-1.jpg" alt="">
+                            <h5 class="menu-price">$5</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Black Coffee</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-2.jpg" alt="">
+                            <h5 class="menu-price">$7</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Chocolete Coffee</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-3.jpg" alt="">
+                            <h5 class="menu-price">$9</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Coffee With Milk</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu End -->
+
+
+    <!-- Reservation Start -->
+    <div class="container-fluid my-5">
+        <div class="container">
+            <div class="reservation position-relative overlay-top overlay-bottom">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 my-5 my-lg-0">
+                        <div class="p-5">
+                            <div class="mb-4">
+                                <h1 class="display-3 text-primary">30% OFF</h1>
+                                <h1 class="text-white">For Online Reservation</h1>
+                            </div>
+                            <p class="text-white">Lorem justo clita erat lorem labore ea, justo dolor lorem ipsum ut sed
+                                eos,
+                                ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea
+                            </p>
+                            <ul class="list-inline text-white m-0">
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet
+                                </li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet
+                                </li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
+                            <h1 class="text-white mb-4 mt-5">Book Your Table</h1>
+
+                            <!-- Success Message -->
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+
+                            <!-- Validation Errors -->
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul class="mb-0">
+                                        @foreach($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            <!-- Booking Form -->
+                            <form action="{{ route('book.store') }}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <input type="text" name="name" class="form-control" placeholder="Name"
+                                        value="{{ old('name') }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" name="email" class="form-control" placeholder="Email"
+                                        value="{{ old('email') }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="date" name="date" class="form-control" value="{{ old('date') }}"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="time" name="time" class="form-control" value="{{ old('time') }}"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <select name="person" class="form-control" required>
+                                        <option value="" selected>Select Person</option>
+                                        @for($i = 1; $i <= 4; $i++)
+                                            <option value="{{ $i }}" {{ old('person') == $i ? 'selected' : '' }}>Person
+                                                {{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Book Now</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Reservation End -->
+
+
+                    <!-- Testimonial Start -->
+                    <div class="container-fluid py-5">
+                        <div class="container">
                             <div class="section-title">
-                                <h4 class="m-0 text-uppercase font-weight-bold">Latest News</h4>
-                                <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
+                                <h4 class=" text-primary text-uppercase text-white" style="letter-spacing: 5px;">
+                                    Testimonial</h4>
+                                <h1 class="display-4 text-white">Our Clients Say</h1>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
-                                <div class="bg-white border border-top-0 p-4">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                    <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                        rebum clita rebum dolor stet amet justo</p>
-                                </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-700x435-2.jpg" style="object-fit: cover;">
-                                <div class="bg-white border border-top-0 p-4">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                    <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                        rebum clita rebum dolor stet amet justo</p>
-                                </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <a href="https://htmlcodex.com/downloading/?item=1541"><img class="img-fluid w-100" src="img/ads-728x90.png" alt=""></a>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-700x435-3.jpg" style="object-fit: cover;">
-                                <div class="bg-white border border-top-0 p-4">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-700x435-4.jpg" style="object-fit: cover;">
-                                <div class="bg-white border border-top-0 p-4">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-2.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-3.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-4.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <a href="https://htmlcodex.com/downloading/?item=1541"><img class="img-fluid w-100" src="img/ads-728x90.png" alt=""></a>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="row news-lg mx-0 mb-3">
-                                <div class="col-md-6 h-100 px-0">
-                                    <img class="img-fluid h-100" src="img/news-700x435-5.jpg" style="object-fit: cover;">
-                                </div>
-                                <div class="col-md-6 d-flex flex-column border bg-white h-100 px-0">
-                                    <div class="mt-auto p-4">
-                                        <div class="mb-2">
-                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                href="">Business</a>
-                                            <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                        </div>
-                                        <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                        <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                            rebum clita rebum dolor stet amet justo</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between bg-white border-top mt-auto p-4">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                            <small>John Doe</small>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                            <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
+                            <div class="owl-carousel testimonial-carousel text-white">
+                                <div class="testimonial-item text-white">
+                                    <div class="d-flex align-items-center mb-3 text-white">
+                                        <img class="img-fluid" src="img/photo_2026-02-05_19-07-23 (2).jpg" alt="">
+                                        <div class="ml-3">
+                                            <h4 class="text-white">អុីណុក</h4>
+                                            <i>Profession</i>
                                         </div>
                                     </div>
+                                    <p class="m-0">កាហ្វេឆ្ងាញ់ហើយ Serviceរត់តុអែមទៀត</p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                                <div class="testimonial-item text-white">
+                                    <div class="d-flex align-items-center mb-3 text-white">
+                                        <img class="img-fluid" src="img/photo_2026-02-05_19-07-23 (3).jpg" alt="">
+                                        <div class="ml-3 text-white">
+                                            <h4 class="text-white">ចន ​វៀច</h4>
+                                            <i>Profession</i>
+                                        </div>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                    <p class="m-0">ម្យ៉ាងម្នាក់ជាមួយstar buck</p>
                                 </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-2.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                                <div class="testimonial-item">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <img class="img-fluid" src="img/photo_2026-02-05_19-07-23.jpg" alt="">
+                                        <div class="ml-3 text-white">
+                                            <h4 class="text-white">គឺម​ ជុងអ៊ុន</h4>
+                                            <i>Profession</i>
+                                        </div>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                    <p class="m-0">កាហ្វេនឹងឆ្ងាញ់ ពេលផឹកអស់សាកអាគុយផឹកបានទៀត</p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-3.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                                <div class="testimonial-item text-white">
+                                    <div class="d-flex align-items-center mb-3 text-white">
+                                        <img class="img-fluid text-white" src="img/photo_2026-02-01_13-46-17.jpg"
+                                            alt="">
+                                        <div class="ml-3 text-white">
+                                            <h4 class="text-white">CHea New</h4>
+                                            <i>Profession</i>
+                                        </div>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-4.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                    <p class="m-0">អ្នកលក់ស្អាត ចេះតែខំមកផឹកទៅ</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="col-lg-4">
-                    <!-- Social Follow Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
-                        </div>
-                        <div class="bg-white border border-top-0 p-3">
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
-                                <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Fans</span>
-                            </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
-                                <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Followers</span>
-                            </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
-                                <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Connects</span>
-                            </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
-                                <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Followers</span>
-                            </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
-                                <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Subscribers</span>
-                            </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none" style="background: #055570;">
-                                <i class="fab fa-vimeo-v text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Followers</span>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Social Follow End -->
+                    <!-- Testimonial End -->
 
-                    <!-- Ads Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
-                        </div>
-                        <div class="bg-white text-center border border-top-0 p-3">
-                            <a href=""><img class="img-fluid" src="img/news-800x500-2.jpg" alt=""></a>
-                        </div>
-                    </div>
-                    <!-- Ads End -->
 
-                    <!-- Popular News Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Tranding News</h4>
-                        </div>
-                        <div class="bg-white border border-top-0 p-3">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                    <!-- Footer Start -->
+                    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
+                        <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
+                            <div class="col-lg-3 col-md-6 mb-5">
+                                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Get In Touch
+                                </h4>
+                                <p><i class="fa fa-map-marker-alt mr-2"></i>Tik Tla,SenSok,Phnom f</p>
+                                <p><i class="fa fa-phone-alt mr-2"></i>+097 7476186</p>
+                                <p class="m-0"><i class="fa fa-envelope mr-2"></i>sokchea1922003@gmail.com</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-5">
+                                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Follow Us</h4>
+                                <p>Amet elitr vero magna sed ipsum sit kasd sea elitr lorem rebum</p>
+                                <div class="d-flex justify-content-start">
+
+                                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2"
+                                        href="https://x.com/SokcheaTho7389" target="_blank">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2"
+                                        href="https://web.facebook.com/chivorn.combodia" target="_blank">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+
+                                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2"
+                                        href="https://t.me/CHea_New" target="_blank">
+                                        <i class="fab fa-telegram-plane"></i>
+                                    </a>
+
+                                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2"
+                                        href="https://www.instagram.com/cheanew2022/" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-2.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                            <div class="col-lg-3 col-md-6 mb-5">
+                                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Open Hours</h4>
+                                <div>
+                                    <h6 class="text-white text-uppercase">Monday - Friday</h6>
+                                    <p>8.00 AM - 8.00 PM</p>
+                                    <h6 class="text-white text-uppercase">Saturday - Sunday</h6>
+                                    <p>2.00 PM - 8.00 PM</p>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-3.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-4.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-5.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
+
+                            <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5"
+                                style="border-color: rgba(256, 256, 256, .1) !important;">
+                                <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold"
+                                        href="#">Domain</a>. All Rights Reserved.</a></p>
+                                <p class="m-0 text-white">Designed by <a class="font-weight-bold"
+                                        href="https://htmlcodex.com">HTML Codex</a> Distributed by <a
+                                        href="https://themewagon.com" target="_blank">ThemeWagon</a></a></p>
                             </div>
                         </div>
-                    </div>
-                    <!-- Popular News End -->
-
-                    <!-- Newsletter Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
-                        </div>
-                        <div class="bg-white text-center border border-top-0 p-3">
-                            <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
-                            <div class="input-group mb-2" style="width: 100%;">
-                                <input type="text" class="form-control form-control-lg" placeholder="Your Email">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
-                                </div>
-                            </div>
-                            <small>Lorem ipsum dolor sit amet elit</small>
-                        </div>
-                    </div>
-                    <!-- Newsletter End -->
-
-                    <!-- Tags Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
-                        </div>
-                        <div class="bg-white border border-top-0 p-3">
-                            <div class="d-flex flex-wrap m-n1">
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Tags End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- News With Sidebar End -->
+                        <!-- Footer End -->
 
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
-        <div class="row py-4">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Get In Touch</h5>
-                <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>info@example.com</p>
-                <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
-                <div class="d-flex justify-content-start">
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square" href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular News</h5>
-                <div class="mb-3">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                </div>
-                <div class="mb-3">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                </div>
-                <div class="">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
-                <div class="m-n1">
-                    <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Entertainment</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Travel</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Lifestyle</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Flickr Photos</h5>
-                <div class="row">
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-1.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-2.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-3.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-4.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-5.jpg" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="img/news-110x110-1.jpg" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
-        <p class="m-0 text-center">&copy; <a href="#">Your Site Name</a>. All Rights Reserved. 
-		
-		<!--/*** The author’s attribution link below must remain intact on your website. ***/-->
-        <!--/*** If you wish to remove this credit link, please purchase the Pro Version from https://htmlcodex.com . ***/-->
-        Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
-    </div>
-    <!-- Footer End -->
+                        <!-- Back to Top -->
+                        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
+                                class="fa fa-angle-double-up"></i></a>
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+                        <!-- JavaScript Libraries -->
+                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                        <script
+                            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+                        <script src="lib/easing/easing.min.js"></script>
+                        <script src="lib/waypoints/waypoints.min.js"></script>
+                        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+                        <script src="lib/tempusdominus/js/moment.min.js"></script>
+                        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+                        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
+                        <!-- Contact Javascript File -->
+                        <script src="mail/jqBootstrapValidation.min.js"></script>
+                        <script src="mail/contact.js"></script>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+                        <!-- Template Javascript -->
+                        <script src="js/main.js"></script>
 </body>
 
 </html>
