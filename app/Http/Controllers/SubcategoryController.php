@@ -11,8 +11,11 @@ class SubcategoryController extends Controller
 {
     public function index()
     {
-        $data = Subcategory::with('category')->get();
+        // ទាញយកតែ Subcategory ណាដែលមាន Category ពិតប្រាកដក្នុង DB ប៉ុណ្ណោះ
+        $data = Subcategory::whereHas('category')->with('category')->get();
         $categories = Category::all();
+        
+        // ពិនិត្យអក្សរតូចធំ៖ បើ Folder ឈ្មោះ Admin (A ធំ) ត្រូវដូរ admin ទៅ Admin
         return view('admin.subcategory.index', compact('data', 'categories'));
     }
 
@@ -32,10 +35,10 @@ class SubcategoryController extends Controller
         Subcategory::create([
             'name' => $request->name,
             'category_id' => $request->category_id,
-            'user_id' => Auth::id(),
+            'user_id' => Auth::id() ?? 1, // ការពារបើមិនទាន់ Login ឱ្យយក ID 1
         ]);
 
-        return redirect()->route('subcategory.index');
+        return redirect()->route('subcategory.index')->with('success', 'Saved!');
     }
 
     public function edit($id)
@@ -58,7 +61,7 @@ class SubcategoryController extends Controller
             'category_id' => $request->category_id,
         ]);
 
-        return redirect()->route('subcategory.index');
+        return redirect()->route('subcategory.index')->with('success', 'Updated!');
     }
 
     public function delete($id)
