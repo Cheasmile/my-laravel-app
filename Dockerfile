@@ -20,7 +20,7 @@ RUN a2enmod rewrite
 # ៣. ចម្លងកូដ និងដំឡើង Composer
 COPY . /var/www/html
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --optimize-autoloader
 
 # ៤. ផ្ដល់សិទ្ធិ (Permissions)
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
