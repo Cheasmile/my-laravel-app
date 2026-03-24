@@ -66,15 +66,15 @@ class CategoryController extends Controller
     }
 public function show($id)
 {
-    // Selected category with subcategories
+    // ១. ត្រូវប្រាកដថាទាញយក Category មកជាមួយ Subcategories
     $category = Category::with('subcategories')->findOrFail($id);
 
-    // All categories for dropdown
+    // ២. ទាញយក Category ទាំងអស់សម្រាប់ដាក់ក្នុង Dropdown (ដើម្បីឱ្យដូច Localhost)
     $categories = Category::all();
 
+    // ៣. បញ្ជូនទៅកាន់ View (ពិនិត្យឈ្មោះ Folder ឱ្យត្រូវនឹង Localhost)
     return view('category.show', compact('category', 'categories'));
 }
-
 
 
 

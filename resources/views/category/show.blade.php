@@ -82,7 +82,7 @@
         Menu
     </a>
 
-    <div class="dropdown-menu">
+     <div class="dropdown-menu">
         @foreach($categories as $cat)
             <a class="dropdown-item" href="{{ route('category.show', $cat->id) }}">
                 {{ $cat->name }}
@@ -90,7 +90,7 @@
         @endforeach
     </div>
 </div>
-                
+               
             </div>
         </div>
     </div>
