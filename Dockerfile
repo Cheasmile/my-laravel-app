@@ -1,6 +1,6 @@
 FROM php:8.2-apache
 
-# ១. ដំឡើង extensions ដែលចាំបាច់ (បន្ថែម libpq-dev សម្រាប់ PostgreSQL)
+# ១. ដំឡើង extensions ដែលចាំបាច់ (បន្ថែម libpq-dev និង pdo_pgsql)
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
@@ -24,7 +24,7 @@ COPY . /var/www/html
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-dev --optimize-autoloader
 
-# ៥. ផ្ដល់សិទ្ធិ (Permissions) ទៅឱ្យ Folder សំខាន់ៗ
+# ៥. ផ្ដល់សិទ្ធិ (Permissions)
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # ៦. បញ្ជាឱ្យរត់ Migration និងបើក Apache
