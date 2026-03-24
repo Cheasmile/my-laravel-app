@@ -11,20 +11,22 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('detail');
-            $table->string('view')->default(0);
-            $table->string('user_id');
-            $table->string('category_id'); 
-            $table->string('subcategory_id');   
-            $table->string('status')->default(1);
-            $table->timestamps();
-        });
-    }
+   public function up()
+{
+    Schema::create('posts', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->text('detail');
+        $table->string('view')->default(0);
+        $table->string('user_id');
+        $table->string('category_id'); 
+        $table->string('subcategory_id');   
+        $table->string('status')->default(1);
+        $table->text('image')->nullable();
+        $table->timestamps();
+    });
+}
+
 
     /**
      * Reverse the migrations.

@@ -28,7 +28,8 @@
               </tr>
             </thead>
            <tbody>
-@foreach($data as $category)
+@foreach($categories as $category)
+
 <tr>
   
     <!--<td>{{ $loop->iteration }}</td> -->
