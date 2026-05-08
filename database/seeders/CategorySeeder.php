@@ -10,60 +10,27 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $categories = [
-            
-    [
-        'name' => 'Espresso-Based Coffees',
-        'user_id' => 1,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ],
-    [
-        'name' => 'Milk & Foam-Heavy Coffees',
-        'user_id' => 1,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ],
-    [
-        'name' => 'Iced & Cold Coffees',
-        'user_id' => 1,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ],
-    [
-        'name' => 'Traditional / Regional Coffees',
-        'user_id' => 1,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ],
-    [
-        'name' => 'Sweet & Dessert Coffees',
-        'user_id' => 1,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ],
-    [
-        'name' => 'Brew Method Coffees',
-        'user_id' => 1,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ],
-    [
-        'name' => 'Bean Type / Specialty Coffees',
-        'user_id' => 1,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ],
-    [
-        'name' => 'Modern & Trendy Coffees',
-        'user_id' => 1,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ],
-];
-
+            ['name' => 'Espresso-Based Coffees', 'user_id' => 1],
+            ['name' => 'Milk & Foam-Heavy Coffees', 'user_id' => 1],
+            ['name' => 'Iced & Cold Coffees', 'user_id' => 1],
+            ['name' => 'Traditional / Regional Coffees', 'user_id' => 1],
+            ['name' => 'Sweet & Dessert Coffees', 'user_id' => 1],
+            ['name' => 'Brew Method Coffees', 'user_id' => 1],
+            ['name' => 'Bean Type / Specialty Coffees', 'user_id' => 1],
+            ['name' => 'Modern & Trendy Coffees', 'user_id' => 1],
+        ];
 
         foreach ($categories as $category) {
-            Category::insert($category);
+            // ប្រើ updateOrCreate ដើម្បីឆែកមើលឈ្មោះ
+            // បើមានឈ្មោះហ្នឹងហើយ វានឹងមិនបញ្ចូលថ្មីទេ (ការពារការស្ទួន)
+            Category::updateOrCreate(
+                ['name' => $category['name']], // លក្ខខណ្ឌសម្រាប់ឆែក
+                [
+                    'user_id' => $category['user_id'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
         }
     }
 }

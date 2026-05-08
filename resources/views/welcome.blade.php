@@ -33,7 +33,7 @@
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
             <a href="index.html" class="navbar-brand px-lg-4 m-0">
-                <h1 class="m-0 display-4 text-uppercase text-white">KOPPEE</h1>
+                <h1 class="m-0 display-4 text-uppercase text-white">CHEA</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -310,12 +310,12 @@
                                 <h1 class="display-3 text-primary">30% OFF</h1>
                                 <h1 class="text-white">For Online Reservation</h1>
                             </div>
-                            <p class="text-white">Lorem justo clita erat lorem labore ea, justo dolor lorem ipsum ut sed
-                                eos,
-                                ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea
+                            <p class="text-white">Our premium beans are roasted to perfection and ready for your arrival. 
+                Reserve your table or take-away order through our portal and enjoy 
+                artisanal coffee at a fraction of the cost.
                             </p>
                             <ul class="list-inline text-white m-0">
-                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Your order is ready the moment you walk in.
                                 </li>
                                 <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet
                                 </li>
