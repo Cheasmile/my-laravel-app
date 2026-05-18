@@ -2,11 +2,13 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ "main" ]
+    # កែប្រែត្រង់នេះឱ្យស្គាល់ទាំង ២ Branch តែម្ដងដើម្បីកុំឱ្យទើសថ្ងៃក្រោយ
+    branches: [ "main", "my-local-changes" ]
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+# ... (ទុកកូដខាងក្រោមឱ្យនៅដដែលទាំងអស់) ...
 
     steps:
     - name: Checkout Code
