@@ -307,7 +307,7 @@
                     <div class="col-lg-6 my-5 my-lg-0">
                         <div class="p-5">
                             <div class="mb-4">
-                                <h1 class="display-3 text-primary">30% OFF</h1>
+                                <h1 class="display-3 text-primary">50% OFF</h1>
                                 <h1 class="text-white">For Online Reservation</h1>
                             </div>
                             <p class="text-white">Our premium beans are roasted to perfection and ready for your arrival. 

@@ -51,4 +51,5 @@ EXPOSE 8080
 
 # ៩. កែសម្រួលបញ្ជាឱ្យរត់ (ប្រើទម្រង់ JSON Array តាមការណែនាំរបស់ Docker)
 # ៩. កែសម្រួលបញ្ជាឱ្យរត់ (បង្កើត .env, key, migrate និងរត់ Server ក្នុងពេលតែមួយ)
-CMD ["sh", "-c", "cp .env.example .env && touch database/database.sqlite && export DB_CONNECTION=sqlite && export DB_DATABASE=/var/www/html/database/database.sqlite && php artisan key:generate && php artisan migrate --force && php-fpm -D && nginx -g 'daemon off;'"]
+# កែសម្រួលជួរ CMD ចុងក្រោយបង្អស់ក្នុង Dockerfile (នៅលើម៉ាស៊ីន ROG)
+CMD ["sh", "-c", "cp .env.example .env && mkdir -p database && touch database/database.sqlite && php artisan key:generate && php artisan migrate --force && php-fpm -D && nginx -g 'daemon off;'"]
