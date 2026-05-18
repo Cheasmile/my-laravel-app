@@ -1,48 +1,30 @@
-# Live automation test for coffee shop website
-FROM php:8.3-fpm-alpine
+FROM php:8.2-apache
 
-# ១. ដំឡើង Nginx, SQLite និង Extensions
-RUN apk add --no-cache \
-    nginx \
-    sqlite \
-    sqlite-dev \
-    libxml2-dev \
-    oniguruma-dev
+# ១. ដំឡើង Dependencies របស់ប្រព័ន្ធ និង PostgreSQL Driver
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libsqlite3-dev \
+    libpq-dev \
+    zip \
+    unzip \
+    git \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd pdo pdo_mysql pdo_sqlite pdo_pgsql
 
-RUN docker-php-ext-install pdo pdo_sqlite mbstring xml
+# ២. កំណត់ផ្លូវទៅកាន់ public folder របស់ Laravel
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN a2enmod rewrite
 
-# ២. ដំឡើង Composer ផ្លូវការ
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# ៣. ចម្លងកូដ និងដំឡើង Composer
+COPY . /var/www/html
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install --no-dev --optimize-autoloader
 
-WORKDIR /var/www/html
+# ៤. ផ្ដល់សិទ្ធិ (Permissions)
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# ៣. កូពីកូដទាំងអស់ចូល
-COPY . .
-
-# ៤. បង្កើតឯកសារ SQLite និង Folder ឱ្យបានត្រឹមត្រូវ
-RUN mkdir -p database storage bootstrap/cache && touch database/database.sqlite
-
-# ៥. កំណត់ Nginx Config ឱ្យចង្អុលទៅ public របស់ Laravel និងប្រើប្រាស់ Port 8080
-RUN printf 'server {\n\
-    listen 8080 default_server;\n\
-    root /var/www/html/public;\n\
-    index index.php index.html;\n\
-    charset utf-8;\n\
-    location / {\n\
-        try_files $uri $uri/ /index.php?$query_string;\n\
-    }\n\
-    location ~ \\.php$ {\n\
-        fastcgi_pass 127.0.0.1:9000;\n\
-    }\n\
-}\n' > /etc/nginx/http.d/default.conf
-
-# ៦. ដំឡើង Vendor Packages
-RUN composer install --optimize-autoloader --ignore-platform-reqs
-
-# ៧. កំណត់សិទ្ធិ (Permissions) ឱ្យបានទូលំទូលាយ
-RUN chmod -R 777 storage bootstrap/cache database
-
-EXPOSE 8080
-
-# ៨. កំណត់បញ្ជាឱ្យរត់អូតូពេលបើក Container (បង្កើត .env, key, migrate រួចរត់ server ភ្លាម)
-CMD ["sh", "-c", "cp .env.example .env && touch database/database.sqlite && export DB_CONNECTION=sqlite && export DB_DATABASE=/var/www/html/database/database.sqlite && php artisan key:generate && php artisan migrate --force && php-fpm -D && nginx -g 'daemon off;'"]
+# ៥. បញ្ជាឱ្យរត់ Migration និងបើក Apache
+CMD php artisan migrate --force && apache2-foreground
