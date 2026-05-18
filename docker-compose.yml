@@ -1,0 +1,12 @@
+services:
+  laravel-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: local-cms-container
+    restart: always
+    ports:
+      - "8080:80"
+    # 🔥 កែសម្រួលត្រង់ជួរនេះ៖ ថែម /html ពីខាងចុង
+    volumes:
+      - ./:/var/www/html
