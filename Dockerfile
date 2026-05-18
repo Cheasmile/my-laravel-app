@@ -46,7 +46,7 @@ RUN composer install --optimize-autoloader --ignore-platform-reqs
 RUN chmod -R 777 storage bootstrap/cache database
 
 # ៨. បង្កើត App Key
-RUN php artisan key:generate
+RUN cp .env.example .env && php artisan key:generate
 
 EXPOSE 8080
 
