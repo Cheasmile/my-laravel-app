@@ -19,8 +19,8 @@ WORKDIR /var/www/html
 # ៣. កូពីកូដទាំងអស់ចូល
 COPY . .
 
-# ៤. បង្កើតឯកសារ SQLite
-RUN mkdir -p database && touch database/database.sqlite
+# ៤. បង្កើតឯកសារ SQLite និង Folder ឱ្យបានត្រឹមត្រូវ
+RUN mkdir -p database storage bootstrap/cache && touch database/database.sqlite
 
 # ៥. កំណត់ Nginx Config ឱ្យចង្អុលទៅ public របស់ Laravel និងប្រើប្រាស់ Port 8080
 RUN printf 'server {\n\
@@ -33,9 +33,6 @@ RUN printf 'server {\n\
     }\n\
     location ~ \\.php$ {\n\
         fastcgi_pass 127.0.0.1:9000;\n\
-        fastcgi_index index.php;\n\
-        include fastcgi_params;\n\
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;\n\
     }\n\
 }\n' > /etc/nginx/http.d/default.conf
 
@@ -45,11 +42,7 @@ RUN composer install --optimize-autoloader --ignore-platform-reqs
 # ៧. កំណត់សិទ្ធិ (Permissions) ឱ្យបានទូលំទូលាយ
 RUN chmod -R 777 storage bootstrap/cache database
 
-# ៨. បង្កើត App Key
-
 EXPOSE 8080
 
-# ៩. កែសម្រួលបញ្ជាឱ្យរត់ (ប្រើទម្រង់ JSON Array តាមការណែនាំរបស់ Docker)
-# ៩. កែសម្រួលបញ្ជាឱ្យរត់ (បង្កើត .env, key, migrate និងរត់ Server ក្នុងពេលតែមួយ)
-# កែសម្រួលជួរ CMD ចុងក្រោយបង្អស់ក្នុង Dockerfile (នៅលើម៉ាស៊ីន ROG)
-CMD ["sh", "-c", "cp .env.example .env && mkdir -p database && touch database/database.sqlite && php artisan key:generate && php artisan migrate --force && php-fpm -D && nginx -g 'daemon off;'"]
+# ៨. កំណត់បញ្ជាឱ្យរត់អូតូពេលបើក Container (បង្កើត .env, key, migrate រួចរត់ server ភ្លាម)
+CMD ["sh", "-c", "cp .env.example .env && touch database/database.sqlite && export DB_CONNECTION=sqlite && export DB_DATABASE=/var/www/html/database/database.sqlite && php artisan key:generate && php artisan migrate --force && php-fpm -D && nginx -g 'daemon off;'"]
