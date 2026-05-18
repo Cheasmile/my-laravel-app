@@ -1,4 +1,4 @@
-# ប្តូរមកប្រើ fpm-alpine វិញដើម្បីឱ្យមាន php-fpm ស្រាប់
+# Live automation test for coffee shop website
 FROM php:8.3-fpm-alpine
 
 # ១. ដំឡើង Nginx, SQLite និង Extensions
