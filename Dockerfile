@@ -1,29 +1,54 @@
-FROM php:8.2-apache
+# ប្តូរមកប្រើ fpm-alpine វិញដើម្បីឱ្យមាន php-fpm ស្រាប់
+FROM php:8.3-fpm-alpine
 
-# ១. ដំឡើង Dependencies (បន្ថែម libpq-dev សម្រាប់ PostgreSQL)
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    libsqlite3-dev \
-    libpq-dev \
-    zip \
-    unzip \
-    git \
-    && docker-php-ext-install gd pdo pdo_mysql pdo_sqlite pdo_pgsql
+# ១. ដំឡើង Nginx, SQLite និង Extensions
+RUN apk add --no-cache \
+    nginx \
+    sqlite \
+    sqlite-dev \
+    libxml2-dev \
+    oniguruma-dev
 
-# ២. កំណត់ផ្លូវទៅកាន់ public folder
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN a2enmod rewrite
+RUN docker-php-ext-install pdo pdo_sqlite mbstring xml
 
-# ៣. ចម្លងកូដ និងដំឡើង Composer
-COPY . /var/www/html
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install --optimize-autoloader
+# ២. ដំឡើង Composer ផ្លូវការ
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# ៤. ផ្ដល់សិទ្ធិ (Permissions)
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+WORKDIR /var/www/html
 
-# ៥. រត់ Migration និងបើក Apache
-CMD php artisan migrate --force && apache2-foreground
+# ៣. កូពីកូដទាំងអស់ចូល
+COPY . .
+
+# ៤. បង្កើតឯកសារ SQLite
+RUN mkdir -p database && touch database/database.sqlite
+
+# ៥. កំណត់ Nginx Config ឱ្យចង្អុលទៅ public របស់ Laravel និងប្រើប្រាស់ Port 8080
+RUN printf 'server {\n\
+    listen 8080 default_server;\n\
+    root /var/www/html/public;\n\
+    index index.php index.html;\n\
+    charset utf-8;\n\
+    location / {\n\
+        try_files $uri $uri/ /index.php?$query_string;\n\
+    }\n\
+    location ~ \\.php$ {\n\
+        fastcgi_pass 127.0.0.1:9000;\n\
+        fastcgi_index index.php;\n\
+        include fastcgi_params;\n\
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;\n\
+    }\n\
+}\n' > /etc/nginx/http.d/default.conf
+
+# ៦. ដំឡើង Vendor Packages
+RUN composer install --optimize-autoloader --ignore-platform-reqs
+
+# ៧. កំណត់សិទ្ធិ (Permissions) ឱ្យបានទូលំទូលាយ
+RUN chmod -R 777 storage bootstrap/cache database
+
+# ៨. បង្កើត App Key
+RUN php artisan key:generate
+
+EXPOSE 8080
+
+# ៩. កែសម្រួលបញ្ជាឱ្យរត់ (ប្រើទម្រង់ JSON Array តាមការណែនាំរបស់ Docker)
+CMD ["sh", "-c", "export DB_CONNECTION=sqlite && export DB_DATABASE=/var/www/html/database/database.sqlite && php-fpm -D && nginx -g 'daemon off;'"]
