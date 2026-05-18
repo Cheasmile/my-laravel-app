@@ -1,52 +1,522 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Shop - Automation Test</title>
-    <script src="https://cdn.jsdelivr.netated.com/plugins/tailwindcss/3.4.1/tailwind.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body class="bg-gray-100 font-sans antialiased">
 
-    <div class="bg-emerald-600 text-white text-center py-6 px-4 shadow-md transition-all duration-500">
-        <h1 class="text-2xl md:text-4xl font-bold tracking-wide animate-pulse">
-            ☕ COFFEE SHOP AUTOMATION LIVE! ☕
-        </h1>
-        <p class="mt-2 text-sm md:text-base font-medium opacity-90">
-            កូដនេះត្រូវបានកែប្រែពីម៉ាស៊ីន <span class="bg-black/30 px-2 py-0.5 rounded font-mono">ROG</span> ហើយរត់មកបង្ហាញនៅលើម៉ាស៊ីន <span class="bg-black/30 px-2 py-0.5 rounded font-mono">sokch</span> ដោយស្វ័យប្រវត្តិតាមរយៈ Docker + Watchtower។
-        </p>
-        <div class="mt-3 inline-block bg-white text-emerald-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">
-            Status: Connected & Working 🍏
+<head>
+    <meta charset="utf-8">
+    <title>KOPPEE - Coffee Shop HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0 nav-bar">
+        <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
+            <a href="index.html" class="navbar-brand px-lg-4 m-0">
+                <h1 class="m-0 display-4 text-uppercase text-white">CHEAT</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto p-4">
+                        <a href="{{ url('/') }}" class="nav-item nav-link active">Home</a>
+                        <a href="{{url('/about')}}" class="nav-item nav-link">About</a>
+                        <a href="{{ url('/service') }}" class="nav-item nav-link">Service</a>
+                        <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto py-0">
+
+
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                        Menu
+                                    </a>
+
+                                    <div class="dropdown-menu">
+                                        @foreach(\App\Models\Category::all() as $category)
+                                            <a class="dropdown-item" href="{{ route('category.show', $category->id) }}">
+                                                {{ $category->name }}
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+
+                                <a href="{{ url('/contact') }}" class="nav-item nav-link">Contact</a>
+                            </div>
+                        </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div id="blog-carousel" class="carousel slide overlay-bottom" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h2 class="text-primary font-weight-medium m-0">We Have Been Serving</h2>
+                        <h1 class="display-1 text-white m-0">COFFEE</h1>
+                        <h2 class="text-white m-0">* SINCE 1950 *</h2>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h2 class="text-primary font-weight-medium m-0">We Have Been Serving</h2>
+                        <h1 class="display-1 text-white m-0">COFFEE</h1>
+                        <h2 class="text-white m-0">* SINCE 1950 *</h2>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#blog-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#blog-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
         </div>
     </div>
+    <!-- Carousel End -->
 
-    <main class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-sm text-center">
-        <h2 class="text-3xl font-extrabold text-gray-800">Welcome to Our Coffee Shop</h2>
-        <p class="mt-2 text-gray-600">គម្រោងប្រព័ន្ធគ្រប់គ្រងហាងកាហ្វេ (cms-04) ដំណើរការដោយស្វ័យប្រវត្តិកម្ម។</p>
-        
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
-                <span class="text-3xl">☕</span>
-                <h3 class="mt-2 font-bold text-gray-700">Espresso</h3>
-                <p class="text-sm text-gray-500 mt-1">Rich and intense espresso shot.</p>
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h4>
+                <h1 class="display-4">Serving Since 1950</h1>
             </div>
-            <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
-                <span class="text-3xl">🥛</span>
-                <h3 class="mt-2 font-bold text-gray-700">Latte</h3>
-                <p class="text-sm text-gray-500 mt-1">Fresh steamed milk over espresso.</p>
-            </div>
-            <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
-                <span class="text-3xl">🍫</span>
-                <h3 class="mt-2 font-bold text-gray-700">Mocha</h3>
-                <p class="text-sm text-gray-500 mt-1">Espresso with chocolate and milk.</p>
+            <div class="row">
+                <div class="col-lg-4 py-0 py-lg-5">
+                    <h1 class="mb-3">Our Story</h1>
+                    <h5 class="mb-3">Eos kasd eos dolor vero vero, lorem stet diam rebum. Ipsum amet sed vero dolor sea
+                    </h5>
+                    <p>Takimata sed vero vero no sit sed, justo clita duo no duo amet et, nonumy kasd sed dolor eos diam
+                        lorem eirmod. Amet sit amet amet no. Est nonumy sed labore eirmod sit magna. Erat at est justo
+                        sit ut. Labor diam sed ipsum et eirmod</p>
+                    <a href="" class="btn btn-secondary font-weight-bold py-2 px-4 mt-2">Learn More</a>
+                </div>
+                <div class="col-lg-4 py-5 py-lg-0" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="img/about.png" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-4 py-0 py-lg-5">
+                    <h1 class="mb-3">Our Vision</h1>
+                    <p>Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
+                        ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
+                        dolor</p>
+                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet</h5>
+                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet</h5>
+                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet</h5>
+                    <a href="" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Learn More</a>
+                </div>
             </div>
         </div>
-    </main>
+    </div>
+    <!-- About End -->
 
-    <footer class="text-center mt-12 pb-10 text-gray-400 text-xs">
-        &copy; 2026 Coffee Shop Project | Developed by Chea
-    </footer>
 
+    <!-- Service Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Our Services</h4>
+                <h1 class="display-4">Fresh & Organic Beans</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-1.jpg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-truck service-icon"></i>Fastest Door Delivery</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor
+                                sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-2.jpg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-coffee service-icon"></i>Fresh Coffee Beans</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor
+                                sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-3.jpg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-award service-icon"></i>Best Quality Coffee</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor
+                                sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-4.jpg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-table service-icon"></i>Online Table Booking</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor
+                                sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+    <!-- Offer Start -->
+
+    <!-- Offer End -->
+
+
+    <!-- Menu Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Menu & Pricing</h4>
+                <h1 class="display-4">Competitive Pricing</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="mb-5">Hot Coffee</h1>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-1.jpg" alt="">
+                            <h5 class="menu-price">$5</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Black Coffee</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-2.jpg" alt="">
+                            <h5 class="menu-price">$7</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Chocolete Coffee</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-3.jpg" alt="">
+                            <h5 class="menu-price">$9</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Coffee With Milk</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="mb-5">Cold Coffee</h1>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-1.jpg" alt="">
+                            <h5 class="menu-price">$5</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Black Coffee</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-2.jpg" alt="">
+                            <h5 class="menu-price">$7</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Chocolete Coffee</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-3.jpg" alt="">
+                            <h5 class="menu-price">$9</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Coffee With Milk</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu End -->
+
+
+    <!-- Reservation Start -->
+    <div class="container-fluid my-5">
+        <div class="container">
+            <div class="reservation position-relative overlay-top overlay-bottom">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 my-5 my-lg-0">
+                        <div class="p-5">
+                            <div class="mb-4">
+                                <h1 class="display-3 text-primary">30% OFF</h1>
+                                <h1 class="text-white">For Online Reservation</h1>
+                            </div>
+                            <p class="text-white">Our premium beans are roasted to perfection and ready for your arrival. 
+                Reserve your table or take-away order through our portal and enjoy 
+                artisanal coffee at a fraction of the cost.
+                            </p>
+                            <ul class="list-inline text-white m-0">
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Your order is ready the moment you walk in.
+                                </li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet
+                                </li>
+                                <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
+                            <h1 class="text-white mb-4 mt-5">Book Your Table</h1>
+
+                            <!-- Success Message -->
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+
+                            <!-- Validation Errors -->
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul class="mb-0">
+                                        @foreach($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            <!-- Booking Form -->
+                            <form action="{{ route('book.store') }}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <input type="text" name="name" class="form-control" placeholder="Name"
+                                        value="{{ old('name') }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" name="email" class="form-control" placeholder="Email"
+                                        value="{{ old('email') }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="date" name="date" class="form-control" value="{{ old('date') }}"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="time" name="time" class="form-control" value="{{ old('time') }}"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <select name="person" class="form-control" required>
+                                        <option value="" selected>Select Person</option>
+                                        @for($i = 1; $i <= 4; $i++)
+                                            <option value="{{ $i }}" {{ old('person') == $i ? 'selected' : '' }}>Person
+                                                {{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Book Now</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Reservation End -->
+
+
+                    <!-- Testimonial Start -->
+                    <div class="container-fluid py-5">
+                        <div class="container">
+                            <div class="section-title">
+                                <h4 class=" text-primary text-uppercase text-white" style="letter-spacing: 5px;">
+                                    Testimonial</h4>
+                                <h1 class="display-4 text-white">Our Clients Say</h1>
+                            </div>
+                            <div class="owl-carousel testimonial-carousel text-white">
+                                <div class="testimonial-item text-white">
+                                    <div class="d-flex align-items-center mb-3 text-white">
+                                        <img class="img-fluid" src="img/photo_2026-02-05_19-07-23 (2).jpg" alt="">
+                                        <div class="ml-3">
+                                            <h4 class="text-white">អុីណុក</h4>
+                                            <i>Profession</i>
+                                        </div>
+                                    </div>
+                                    <p class="m-0">កាហ្វេឆ្ងាញ់ហើយ Serviceរត់តុអែមទៀត</p>
+                                </div>
+                                <div class="testimonial-item text-white">
+                                    <div class="d-flex align-items-center mb-3 text-white">
+                                        <img class="img-fluid" src="img/photo_2026-02-05_19-07-23 (3).jpg" alt="">
+                                        <div class="ml-3 text-white">
+                                            <h4 class="text-white">ចន ​វៀច</h4>
+                                            <i>Profession</i>
+                                        </div>
+                                    </div>
+                                    <p class="m-0">ម្យ៉ាងម្នាក់ជាមួយstar buck</p>
+                                </div>
+                                <div class="testimonial-item">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <img class="img-fluid" src="img/photo_2026-02-05_19-07-23.jpg" alt="">
+                                        <div class="ml-3 text-white">
+                                            <h4 class="text-white">គឺម​ ជុងអ៊ុន</h4>
+                                            <i>Profession</i>
+                                        </div>
+                                    </div>
+                                    <p class="m-0">កាហ្វេនឹងឆ្ងាញ់ ពេលផឹកអស់សាកអាគុយផឹកបានទៀត</p>
+                                </div>
+                                <div class="testimonial-item text-white">
+                                    <div class="d-flex align-items-center mb-3 text-white">
+                                        <img class="img-fluid text-white" src="img/photo_2026-02-01_13-46-17.jpg"
+                                            alt="">
+                                        <div class="ml-3 text-white">
+                                            <h4 class="text-white">CHea New</h4>
+                                            <i>Profession</i>
+                                        </div>
+                                    </div>
+                                    <p class="m-0">អ្នកលក់ស្អាត ចេះតែខំមកផឹកទៅ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial End -->
+
+
+                    <!-- Footer Start -->
+                    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
+                        <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
+                            <div class="col-lg-3 col-md-6 mb-5">
+                                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Get In Touch
+                                </h4>
+                                <p><i class="fa fa-map-marker-alt mr-2"></i>Tik Tla,SenSok,Phnom f</p>
+                                <p><i class="fa fa-phone-alt mr-2"></i>+097 7476186</p>
+                                <p class="m-0"><i class="fa fa-envelope mr-2"></i>sokchea1922003@gmail.com</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-5">
+                                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Follow Us</h4>
+                                <p>Amet elitr vero magna sed ipsum sit kasd sea elitr lorem rebum</p>
+                                <div class="d-flex justify-content-start">
+
+                                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2"
+                                        href="https://x.com/SokcheaTho7389" target="_blank">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2"
+                                        href="https://web.facebook.com/chivorn.combodia" target="_blank">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+
+                                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2"
+                                        href="https://t.me/CHea_New" target="_blank">
+                                        <i class="fab fa-telegram-plane"></i>
+                                    </a>
+
+                                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2"
+                                        href="https://www.instagram.com/cheanew2022/" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-5">
+                                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Open Hours</h4>
+                                <div>
+                                    <h6 class="text-white text-uppercase">Monday - Friday</h6>
+                                    <p>8.00 AM - 8.00 PM</p>
+                                    <h6 class="text-white text-uppercase">Saturday - Sunday</h6>
+                                    <p>2.00 PM - 8.00 PM</p>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5"
+                                style="border-color: rgba(256, 256, 256, .1) !important;">
+                                <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold"
+                                        href="#">Domain</a>. All Rights Reserved.</a></p>
+                                <p class="m-0 text-white">Designed by <a class="font-weight-bold"
+                                        href="https://htmlcodex.com">HTML Codex</a> Distributed by <a
+                                        href="https://themewagon.com" target="_blank">ThemeWagon</a></a></p>
+                            </div>
+                        </div>
+                        <!-- Footer End -->
+
+
+                        <!-- Back to Top -->
+                        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
+                                class="fa fa-angle-double-up"></i></a>
+
+
+                        <!-- JavaScript Libraries -->
+                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                        <script
+                            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+                        <script src="lib/easing/easing.min.js"></script>
+                        <script src="lib/waypoints/waypoints.min.js"></script>
+                        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+                        <script src="lib/tempusdominus/js/moment.min.js"></script>
+                        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+                        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+                        <!-- Contact Javascript File -->
+                        <script src="mail/jqBootstrapValidation.min.js"></script>
+                        <script src="mail/contact.js"></script>
+
+                        <!-- Template Javascript -->
+                        <script src="js/main.js"></script>
 </body>
+
 </html>
