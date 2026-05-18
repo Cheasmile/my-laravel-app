@@ -33,7 +33,7 @@
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
             <a href="index.html" class="navbar-brand px-lg-4 m-0">
-                <h1 class="m-0 display-4 text-uppercase text-white">CHEA</h1>
+                <h1 class="m-0 display-4 text-uppercase text-white">CHEAT</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -307,7 +307,7 @@
                     <div class="col-lg-6 my-5 my-lg-0">
                         <div class="p-5">
                             <div class="mb-4">
-                                <h1 class="display-3 text-primary">50% OFF</h1>
+                                <h1 class="display-3 text-primary">30% OFF</h1>
                                 <h1 class="text-white">For Online Reservation</h1>
                             </div>
                             <p class="text-white">Our premium beans are roasted to perfection and ready for your arrival. 
