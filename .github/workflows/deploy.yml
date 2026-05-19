@@ -3,7 +3,7 @@ name: CI/CD Production Deployment
 on:
   push:
     branches:
-      - main # ឱ្យវារត់រាល់ពេល Chea push កូដចូល branch main
+      - my-local-changes # 👈 ដូរទៅតាមឈ្មោះ Branch ដែល Chea កំពុងប្រើប្រាស់ពិតប្រាកដក្នុងរូបភាព
 
 jobs:
   # -------------------------------------------------------
@@ -28,42 +28,35 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          # ប្តូរត្រង់ cms-04-laravel-app ទៅតាមឈ្មោះ repository ពិតប្រាកដរបស់ Chea
-          tags: ghcr.io/${{ github.repository }}/cms-04-laravel-app:latest
+          # 🎯 កែសម្រួលត្រង់នេះ៖ ប្រើឈ្មោះអថេរដកស្រង់អូតូ ដើម្បីឱ្យវាបង្កើត Package ត្រូវតាមឈ្មោះ Repository ពិតប្រាកដ
+          tags: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
 
   # -------------------------------------------------------
-  # JOB ទី ២៖ AUTOMATED OPERATIONS (DEPLOY TO SERVER SOKH)
+  # JOB ទី ១ (បន្ថែម)៖ បញ្ជាឱ្យរត់នៅលើម៉ាស៊ីន Dev/Operation របស់ Chea ផ្ទាល់
   # -------------------------------------------------------
   deploy:
     runs-on: ubuntu-latest
-    needs: build # ត្រូវចាំឱ្យ Job Build ខាងលើជាប់ពណ៌បៃតងជោគជ័យសិន ទើបហក់មកធ្វើការងារនេះ
-
+    needs: build
     steps:
       - name: Deploy to Server via SSH
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SERVER_HOST }}     # IP Address របស់ Server sokh
-          username: ${{ secrets.SERVER_USER }} # Username (ឧទាហរណ៍៖ root)
-          key: ${{ secrets.SERVER_SSH_KEY }}   # SSH Private Key សម្រាប់ចូល Server
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
-            # 1. ចូលទៅកាន់ Folder គម្រោងនៅលើ Server sokh
             cd /var/www/cms-04 
-
-            # 2. ទាញយកកូដថ្មីចុងក្រោយ (រួមទាំងឯកសារ docker-compose.prod.yml និង nginx.conf) ពី GitHub
-            git pull origin main
-
-            # 3. ចូលទៅ Log in ក្នុង Docker លើ Server ដើម្បីមានសិទ្ធិ Pull Image ពី GitHub Registry
+            git pull origin my-local-changes
+            
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-            # 4. បិទ Container ចាស់ៗចោលសិន (ទាំង Nginx និង Laravel)
-            docker-compose -f docker-compose.prod.yml down
-
-            # 5. បង្ខំឱ្យវាទាញយក (Pull) Docker Image ជំនាន់ថ្មីចែសដែលទើបតែ Build មិញ
-            docker-compose -f docker-compose.prod.yml pull
-
-            # 6. បើកដំណើរការ Nginx Hosting និង Laravel ឡើងវិញក្នុងលក្ខណៈ Background
-            docker-compose -f docker-compose.prod.yml up -d
-
-            # 7. សម្អាតពួក Image ចាស់ៗដែលលែងប្រើ (Dangling Images) កុំឱ្យណែន Drive របស់ Server
+            
+            # 🔥 ឈប់ប្រើ docker-compose នាំតែញ៉េរញ៉ៃ Network ដូចដែលយើងព្រមព្រៀងគ្នា
+            # លុប Container ចាស់ចោល រួចដកទាញយក (Pull) Image ពិតប្រាកដមកបើករត់ភ្លាមៗ
+            docker rm -f cms-container || true
+            docker pull ghcr.io/cheasmile/my-laravel-app:latest
+            
+            # រត់ Container ថ្មី ភ្ជាប់ស្ពានទៅរក XAMPP MySQL លើ Windows រួចរត់បង្កើត Seeder (Admin Account) អូតូ
+            docker run -d -p 8080:80 --name cms-container --add-host=host.docker.internal:host-gateway --restart always ghcr.io/cheasmile/my-laravel-app:latest
+            
             docker image prune -f
