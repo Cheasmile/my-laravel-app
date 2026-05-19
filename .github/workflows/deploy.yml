@@ -6,7 +6,9 @@ on:
       - main
 
 jobs:
-  # 🤖 រក្សាទុកតែ Job Build មួយគត់ដែលជាបេះដូងនៃ DevOps Assignment
+  # -------------------------------------------------------
+  # JOB ទី ១៖ BUILD IMAGE (រត់នៅលើ Cloud របស់ GitHub)
+  # -------------------------------------------------------
   build:
     runs-on: ubuntu-latest
     permissions:
@@ -30,5 +32,43 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          # 🎯 ឈ្មោះអក្សរតូច cheasmile សុទ្ធដែល Chea កែត្រូវមុននេះ
           tags: ghcr.io/cheasmile/my-laravel-app:latest
+
+  # -------------------------------------------------------
+  # JOB ទី ២៖ DEPLOY REAL-TIME & FIX VENDOR (រត់លើម៉ាស៊ីន DARIN)
+  # -------------------------------------------------------
+  deploy:
+    runs-on: self-hosted # 🎯 បញ្ជាឱ្យមកផ្ទាំង PowerShell "Listening for Jobs" លើម៉ាស៊ីន ROG
+    needs: build         # រង់ចាំឱ្យកូដ Build ជោគជ័យសិន
+
+    steps:
+      - name: Checkout Code on Operation PC
+        uses: actions/checkout@v3
+
+      - name: Update Docker Containers & Install Composer
+        shell: powershell
+        run: |
+          # ១. ចូលទៅកាន់ Folder គម្រោងក្នុង PC ទីពីរ (ROG)
+          cd C:\Users\sokch\Desktop\my-laravel-app
+          
+          # ២. ទាញយកកូដថ្មីចុងក្រោយបង្អស់ពី GitHub
+          git pull origin main
+          
+          # ៣. ឡុកចូល GitHub Registry លើ PC នោះ
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          
+          # ៤. បិទ Container ចាស់ចោល
+          docker-compose down
+          
+          # ៥. បើកដំណើរការ Container ថ្មី (App, Nginx)
+          docker-compose up -d --build
+          
+          # 🎯 ៦. ដោះស្រាយ Error: បញ្ជាដំឡើង vendor នៅក្នុង Container ស្វ័យប្រវត្តិ
+          docker exec local-cms-container composer install --no-dev --optimize-autoloader
+          
+          # ៧. រង់ចាំ ៥ វិនាទី រួចរត់បង្កើតតារាង Database និងចាក់ទិន្នន័យ Seed
+          Start-Sleep -Seconds 5
+          docker exec local-cms-container php artisan migrate:fresh --seed --force
+          
+          # ៨. សម្អាតកាកសំណល់ Image ចាស់ៗចោល
+          docker image prune -f
