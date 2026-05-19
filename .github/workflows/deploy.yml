@@ -1,54 +1,7 @@
-name: CI/CD Production Deployment
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  # -------------------------------------------------------
-  # JOB ទី ១៖ BUILD IMAGE (រត់នៅលើ Cloud របស់ GitHub)
-  # -------------------------------------------------------
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and Push Docker Image
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ghcr.io/cheasmile/my-laravel-app:latest
-
-  # -------------------------------------------------------
-  # JOB ទី ២៖ DEPLOY REAL-TIME & FIX VENDOR (រត់លើម៉ាស៊ីន DARIN)
-  # -------------------------------------------------------
-  deploy:
-    runs-on: self-hosted # 🎯 បញ្ជាឱ្យមកផ្ទាំង PowerShell "Listening for Jobs" លើម៉ាស៊ីន ROG
-    needs: build         # រង់ចាំឱ្យកូដ Build ជោគជ័យសិន
-
-    steps:
-      - name: Checkout Code on Operation PC
-        uses: actions/checkout@v3
-
-      - name: Update Docker Containers & Install Composer
+- name: Update Docker Containers & Install Composer
         shell: powershell
         run: |
-          # ១. ចូលទៅកាន់ Folder គម្រោងក្នុង PC ទីពីរ (ROG)
+          # 🎯 នេះជាផ្លូវពិតប្រាកដនៅលើម៉ាស៊ីន Operation PC (sokch)
           cd C:\Users\sokch\Desktop\my-laravel-app
           
           # ២. ទាញយកកូដថ្មីចុងក្រោយបង្អស់ពី GitHub
@@ -63,7 +16,7 @@ jobs:
           # ៥. បើកដំណើរការ Container ថ្មី (App, Nginx)
           docker-compose up -d --build
           
-          # 🎯 ៦. ដោះស្រាយ Error: បញ្ជាដំឡើង vendor នៅក្នុង Container ស្វ័យប្រវត្តិ
+          # ៦. ដោះស្រាយ Error vendor
           docker exec local-cms-container composer install --no-dev --optimize-autoloader
           
           # ៧. រង់ចាំ ៥ វិនាទី រួចរត់បង្កើតតារាង Database និងចាក់ទិន្នន័យ Seed
