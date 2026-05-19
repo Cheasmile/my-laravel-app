@@ -3,12 +3,9 @@ name: CI/CD Production Deployment
 on:
   push:
     branches:
-      - my-local-changes # 👈 ដូរទៅតាមឈ្មោះ Branch ដែល Chea កំពុងប្រើប្រាស់ពិតប្រាកដក្នុងរូបភាព
+      - main # 👈 ឱ្យវារត់រាល់ពេល Chea push ចូល branch main
 
 jobs:
-  # -------------------------------------------------------
-  # JOB ទី ១៖ BUILD IMAGE រួចរុញទៅ GitHub Packages (GHCR)
-  # -------------------------------------------------------
   build:
     runs-on: ubuntu-latest
     steps:
@@ -28,12 +25,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          # 🎯 កែសម្រួលត្រង់នេះ៖ ប្រើឈ្មោះអថេរដកស្រង់អូតូ ដើម្បីឱ្យវាបង្កើត Package ត្រូវតាមឈ្មោះ Repository ពិតប្រាកដ
+          # 🎯 បញ្ជាឱ្យស្វែងរកឈ្មោះ owner (cheasmile) និងឈ្មោះ repository (my-laravel-app) ដោយស្វ័យប្រវត្តិ
           tags: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
 
-  # -------------------------------------------------------
-  # JOB ទី ១ (បន្ថែម)៖ បញ្ជាឱ្យរត់នៅលើម៉ាស៊ីន Dev/Operation របស់ Chea ផ្ទាល់
-  # -------------------------------------------------------
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -47,16 +41,14 @@ jobs:
           port: 22
           script: |
             cd /var/www/cms-04 
-            git pull origin my-local-changes
+            git pull origin main
             
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             
-            # 🔥 ឈប់ប្រើ docker-compose នាំតែញ៉េរញ៉ៃ Network ដូចដែលយើងព្រមព្រៀងគ្នា
-            # លុប Container ចាស់ចោល រួចដកទាញយក (Pull) Image ពិតប្រាកដមកបើករត់ភ្លាមៗ
+            # ដំណើរការលុប container ចាស់ និង pull យក image ថ្មីចែសមកបើករត់ភ្លាមៗ
             docker rm -f cms-container || true
             docker pull ghcr.io/cheasmile/my-laravel-app:latest
             
-            # រត់ Container ថ្មី ភ្ជាប់ស្ពានទៅរក XAMPP MySQL លើ Windows រួចរត់បង្កើត Seeder (Admin Account) អូតូ
             docker run -d -p 8080:80 --name cms-container --add-host=host.docker.internal:host-gateway --restart always ghcr.io/cheasmile/my-laravel-app:latest
             
             docker image prune -f
