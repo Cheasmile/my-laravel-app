@@ -3,12 +3,11 @@ name: CI/CD Production Deployment
 on:
   push:
     branches:
-      - main # 👈 ឱ្យវារត់រាល់ពេល Chea push ចូល branch main
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     permissions:
       contents: read
       packages: write
@@ -30,7 +29,6 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          # 🎯 ប្រើអក្សរតូច cheasmile ទាំងអស់ដាច់ខាត ដើម្បីកុំឱ្យ Docker គាំង
           tags: ghcr.io/cheasmile/my-laravel-app:latest
 
   deploy:
@@ -47,16 +45,26 @@ jobs:
           port: 22
           script: |
             cd /var/www/cms-04 
-
             git pull origin main
 
+            # ចូល Log in ដើម្បីទាញយក Image ពី Registry
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
+            # លុប Container ចាស់ចោល
             docker rm -f cms-container || true
 
-            # 🎯 ប្រើឈ្មោះអក្សរតូចដូចគ្នាទាំងអស់
+            # ទាញយក Image ជំនាន់ចុងក្រោយ
             docker pull ghcr.io/cheasmile/my-laravel-app:latest
 
-            docker run -d -p 8080:80 --name cms-container --add-host=host.docker.internal:host-gateway --restart always ghcr.io/cheasmile/my-laravel-app:latest
+            # បើកដំណើរការ Container ថ្មីភ្ជាប់ទៅកាន់ Database XAMPP លើ Windows រួចបើក Port 8080
+            docker run -d -p 8080:80 \
+              --name cms-container \
+              --add-host=host.docker.internal:host-gateway \
+              --restart always \
+              ghcr.io/cheasmile/my-laravel-app:latest
 
+            # រត់បង្កើត Database Table និងចាក់ Seeder គណនី Admin ភ្លាមៗពីក្នុង Container ផ្ទាល់
+            docker exec cms-container php artisan migrate:fresh --seed --force
+
+            # សម្អាតចោល Image ចាស់ៗ
             docker image prune -f

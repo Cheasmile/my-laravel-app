@@ -6,21 +6,24 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd pdo pdo_mysql
 
-# ២. កំណត់ផ្លូវទៅកាន់ public folder របស់ Laravel
+# ២. កំណត់ផ្លូវទៅកាន់ public folder របស់ Laravel ឱ្យត្រូវជាមួយ Apache
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN a2enmod rewrite
 
-# ៣. ចម្លងកូដ និងបង្កើតឯកសារ .env
+# ៣. ចម្លងកូដចូលទៅក្នុង Container
 COPY . /var/www/html
-RUN cp .env.example .env && php artisan key:generate
 
-# ៤. ដំឡើង Composer ក្នុង Container
+# ៤. ដំឡើង Composer និងទាញយក Packages
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-dev --optimize-autoloader
 
-# ៥. ផ្ដល់សិទ្ធិ Permissions
+# ៥. រៀបចំឯកសារ .env និងបង្កើត Key ទុកជាមុនសម្រាប់ការរត់ Production
+RUN if [ ! -f .env ]; then cp .env.example .env; fi
+RUN php artisan key:generate --force
+
+# ៦. ផ្ដល់សិទ្ធិ Permissions ឱ្យ Apache អាចអាន និងសរសេរបាន
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# ៦. បញ្ជាផ្ដាច់ព្រ័ត្រ៖ សម្អាត cache -> រត់បង្កើតតារាង និងចាក់ Seeder (គណនី Admin) -> បើក Web Server
-CMD php artisan config:clear && php artisan migrate:fresh --seed --force && apache2-foreground
+# ៧. បើកដំណើរការ Apache Web Server
+CMD php artisan config:cache && php artisan route:cache && apache2-foreground
