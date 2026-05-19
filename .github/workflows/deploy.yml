@@ -3,12 +3,9 @@ name: CI/CD Production Deployment
 on:
   push:
     branches:
-      - main # ឱ្យវារត់រាល់ពេល Chea push កូដចូល branch main
+      - main # 👈 ឱ្យវារត់រាល់ពេល Chea push ចូល branch main
 
 jobs:
-  # -------------------------------------------------------
-  # JOB ទី ១៖ BUILD IMAGE រួចរុញទៅ GitHub Packages (GHCR)
-  # -------------------------------------------------------
   build:
     runs-on: ubuntu-latest
     
@@ -33,12 +30,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          # 🎯 កែសម្រួលត្រង់នេះ៖ ប្តូរទៅជាអក្សរតូច (cheasmile) ទាំងអស់ដើម្បីកុំឱ្យ Docker គាំង Error
+          # 🎯 ប្រើអក្សរតូច cheasmile ទាំងអស់ដាច់ខាត ដើម្បីកុំឱ្យ Docker គាំង
           tags: ghcr.io/cheasmile/my-laravel-app:latest
 
-  # -------------------------------------------------------
-  # JOB ទី ២៖ AUTOMATED OPERATIONS (DEPLOY TO SERVER SOKH)
-  # -------------------------------------------------------
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -60,7 +54,7 @@ jobs:
 
             docker rm -f cms-container || true
 
-            # 🎯 ប្រើប្រាស់ឈ្មោះអក្សរតូចដូចគ្នាទាំងអស់
+            # 🎯 ប្រើឈ្មោះអក្សរតូចដូចគ្នាទាំងអស់
             docker pull ghcr.io/cheasmile/my-laravel-app:latest
 
             docker run -d -p 8080:80 --name cms-container --add-host=host.docker.internal:host-gateway --restart always ghcr.io/cheasmile/my-laravel-app:latest
