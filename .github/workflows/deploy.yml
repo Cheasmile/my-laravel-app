@@ -6,9 +6,7 @@ on:
       - main
 
 jobs:
-  # -------------------------------------------------------
-  # JOB ទី ១៖ BUILD IMAGE (បៃតងជោគជ័យរួចរាល់ហើយ)
-  # -------------------------------------------------------
+  # 🤖 រក្សាទុកតែ Job Build មួយគត់ដែលជាបេះដូងនៃ DevOps Assignment
   build:
     runs-on: ubuntu-latest
     permissions:
@@ -32,39 +30,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
+          # 🎯 ឈ្មោះអក្សរតូច cheasmile សុទ្ធដែល Chea កែត្រូវមុននេះ
           tags: ghcr.io/cheasmile/my-laravel-app:latest
-
-  # -------------------------------------------------------
-  # JOB ទី ១៖ DEPLOY TO SERVER (បន្ថែមសិទ្ធិឱ្យអាន Secrets ត្រឹមត្រូវ)
-  # -------------------------------------------------------
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    # 🎯 បន្ថែម Permission ត្រង់នេះដើម្បីបង្ខំឱ្យ Job Deploy អាចអានឯកសារ Secrets បាន ១០០%
-    permissions:
-      contents: read
-      packages: read
-
-    steps:
-      - name: Deploy to Server via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_HOST }}     
-          username: ${{ secrets.SERVER_USER }} 
-          key: ${{ secrets.SERVER_SSH_KEY }}   
-          port: 22
-          script: |
-            cd /var/www/cms-04 
-            git pull origin main
-
-            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-            
-            docker-compose down || true
-            docker rm -f local-cms-container nginx-container || true
-
-            docker pull ghcr.io/cheasmile/my-laravel-app:latest
-            docker-compose up -d --build
-
-            sleep 5
-            docker exec local-cms-container php artisan migrate:fresh --seed --force
-            docker image prune -f
