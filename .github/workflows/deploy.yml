@@ -6,6 +6,9 @@ on:
       - main
 
 jobs:
+  # -------------------------------------------------------
+  # JOB ទី ១៖ BUILD IMAGE (បៃតងជោគជ័យរួចរាល់ហើយ)
+  # -------------------------------------------------------
   build:
     runs-on: ubuntu-latest
     permissions:
@@ -29,11 +32,18 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/cheasmile/my-laravel-app:latest # ប្រើអក្សរតូចដាច់ខាត ការពារ Error
+          tags: ghcr.io/cheasmile/my-laravel-app:latest
 
+  # -------------------------------------------------------
+  # JOB ទី ១៖ DEPLOY TO SERVER (បន្ថែមសិទ្ធិឱ្យអាន Secrets ត្រឹមត្រូវ)
+  # -------------------------------------------------------
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    # 🎯 បន្ថែម Permission ត្រង់នេះដើម្បីបង្ខំឱ្យ Job Deploy អាចអានឯកសារ Secrets បាន ១០០%
+    permissions:
+      contents: read
+      packages: read
 
     steps:
       - name: Deploy to Server via SSH
@@ -49,17 +59,12 @@ jobs:
 
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             
-            # សម្អាត Container ចាស់ៗចេញ
             docker-compose down || true
             docker rm -f local-cms-container nginx-container || true
 
-            # ទាញយក Image ថ្មីពី GitHub Registry
             docker pull ghcr.io/cheasmile/my-laravel-app:latest
-
-            # បើកដំណើរការប្រព័ន្ធតាមរយៈ Docker Compose លើ Server ឱ្យដើរស្វ័យប្រវត្តិ
             docker-compose up -d --build
 
-            # ទុកពេល ៥ វិនាទីឱ្យ Database និង App ស្គាល់គ្នា រួចបង្កើត Table ទិន្នន័យ
             sleep 5
             docker exec local-cms-container php artisan migrate:fresh --seed --force
             docker image prune -f
