@@ -1,45 +1,27 @@
-# -------------------------------------------------------
-  # JOB ទី ២៖ DEPLOYMENT REAL-TIME (រត់នៅលើម៉ាស៊ីន DARIN ផ្ទាល់)
-  # -------------------------------------------------------
+name: Deploy Automation
+on:
+  push:
+    branches:
+      - main
+jobs:
   deploy:
-    runs-on: self-hosted # 🎯 រត់លើម៉ាស៊ីន Windows ទីពីរ (DARIN) របស់ Chea
-    needs: build         
-
+    runs-on: self-hosted
     steps:
-      - name: Checkout Code on Operation PC
-        uses: actions/checkout@v3
-
-      - name: Update Docker Containers Real-time
+      - uses: actions/checkout@v3
+      - name: Deploy
         shell: powershell
         run: |
-          # ១. ចូលទៅកាន់ Folder គម្រោងក្នុង PC ទីពីរ
           cd C:\Users\sokch\Desktop\my-laravel-app
           
-          # 🎯 ២. បង្ខំសម្អាត និងទាញយកកូដថ្មីចុងក្រោយបង្អស់ពី GitHub ចូល Folder ផ្ទាល់កុំឱ្យជាប់ Cache
-          git reset --hard origin/main
-          git clean -fd
-          git pull origin main
+          # បិទ និងលុប Container, Network, និង Volume (ដកចេញ -v បើអ្នកមិនចង់លុប Volume)
+          docker-compose down -v
           
-          # ៣. ឡុកចូល GitHub Registry លើ PC នោះ ដើម្បីមានសិទ្ធិទាញយក Image ថ្មី
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          # ទាញយកកូដ និង Build ថ្មីដោយគ្មាន Cache
+          docker-compose build --no-cache laravel-app
           
-          # ៤. បិទ និងសម្អាត Container ចាស់ចោលឱ្យជ្រះស្រឡះ Port
-          docker-compose down
+          # បើកដំណើរការវិញ
+          docker-compose up -d
           
-          # 🎯 ៥. មហាបញ្ជា៖ បង្ខំឱ្យ Docker ទៅទាញយក (Pull) រូបភាព Image ថ្មីចែសពី GitHub Registry មកដំឡើង
-          docker-compose pull
-          
-          # 🎯 ៦. បើកដុតបញ្ឆេះ Containers ថ្មី ដោយបង្ខំឱ្យវាបង្កើតឡើងវិញ (កម្ចាត់កូដចាស់ចោល ១០០%)
-          docker-compose up -d --force-recreate
-          
-          # ៧. រំលាយ Error vendor ដោយដំឡើងកញ្ចប់ Composer ឱ្យស្របគ្នានឹងកូដថ្មី
-          docker exec local-cms-container composer install
-          
-          # ៨. រង់ចាំ ១៥ វិនាទី រួចរត់ Migrate បង្កើតតារាង និងចាក់ទិន្នន័យ Seed ស្វ័យប្រវត្តិចំ Container 
-          Start-Sleep -Seconds 15
-          docker exec local-cms-container php artisan migrate:fresh --seed --force
-          
-          # 🎯 ៩. សម្អាតកាកសំណល់ Image ចាស់ៗ និង Cache ដែលគាំងចោលឱ្យស្អាតធេង
-          docker exec local-cms-container php artisan cache:clear
-          docker exec local-cms-container php artisan view:clear
-          docker image prune -f
+          # កំណត់សិទ្ធិ (Permission) ក្នុង Container
+          docker exec local-cms-container chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+          docker exec local-cms-container php artisan optimize:clear
