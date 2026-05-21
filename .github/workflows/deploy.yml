@@ -1,26 +1,27 @@
 - name: Update Docker Containers & Install Composer
         shell: powershell
         run: |
-          # 🎯 នេះជាផ្លូវពិតប្រាកដនៅលើម៉ាស៊ីន Operation PC (sokch)
+          # 🎯 ១. ចូលទៅកាន់ Folder គម្រោងនៅលើម៉ាស៊ីន sokch
           cd C:\Users\sokch\Desktop\my-laravel-app
           
           # ២. ទាញយកកូដថ្មីចុងក្រោយបង្អស់ពី GitHub
+          git reset --hard origin/main
           git pull origin main
           
           # ៣. ឡុកចូល GitHub Registry លើ PC នោះ
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           
-          # ៤. បិទ Container ចាស់ចោល
+          # ៤. បិទ Container ចាស់ៗចោលឱ្យជ្រះស្រឡះ Port
           docker-compose down
           
-          # ៥. បើកដំណើរការ Container ថ្មី (App, Nginx)
+          # ៥. បើកដំណើរការ Container ថ្មី (App, Nginx, MySQL)
           docker-compose up -d --build
           
-          # ៦. ដោះស្រាយ Error vendor
-          docker exec local-cms-container composer install --no-dev --optimize-autoloader
+          # 🎯 ៦. ដំឡើង Composer ធម្មតា (ដកពាក្យ --no-dev ចោល ដើម្បីរក្សាទុក Faker កុំឱ្យដួល Container)
+          docker exec local-cms-container composer install
           
-          # ៧. រង់ចាំ ៥ វិនាទី រួចរត់បង្កើតតារាង Database និងចាក់ទិន្នន័យ Seed
-          Start-Sleep -Seconds 5
+          # 🎯 ៧. ទុកពេល ១៥ វិនាទីពេញ ឱ្យ MySQL ងើបឆេះរៀបរយ រួចរត់បង្កើតតារាង និងចាក់ទិន្នន័យ Seed
+          Start-Sleep -Seconds 15
           docker exec local-cms-container php artisan migrate:fresh --seed --force
           
           # ៨. សម្អាតកាកសំណល់ Image ចាស់ៗចោល
