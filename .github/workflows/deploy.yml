@@ -1,27 +1,21 @@
-name: Deploy Automation
-on:
-  push:
-    branches:
-      - main
-jobs:
-  deploy:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v3
-      - name: Deploy
+- name: Deploy
         shell: powershell
         run: |
           cd C:\Users\sokch\Desktop\my-laravel-app
           
-          # បិទ និងលុប Container, Network, និង Volume (ដកចេញ -v បើអ្នកមិនចង់លុប Volume)
+          # ១. ទាញយកកូដថ្មីពី GitHub មកកាន់ Folder លើម៉ាស៊ីន Sokh
+          git fetch --all
+          git reset --hard origin/main
+          
+          # ២. បិទ និងលុបអ្វីៗទាំងអស់ចោល
           docker-compose down -v
           
-          # ទាញយកកូដ និង Build ថ្មីដោយគ្មាន Cache
+          # ៣. Build ថ្មីដោយបង្ខំ (គ្មាន Cache)
           docker-compose build --no-cache laravel-app
           
-          # បើកដំណើរការវិញ
+          # ៤. បើកដំណើរការវិញ
           docker-compose up -d
           
-          # កំណត់សិទ្ធិ (Permission) ក្នុង Container
-          docker exec local-cms-container chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+          # ៥. រត់ Migration ដើម្បីកុំឱ្យ Error ដូចមុន
+          docker exec local-cms-container php artisan migrate --force
           docker exec local-cms-container php artisan optimize:clear
