@@ -1,0 +1,73 @@
+[33m396b292[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m fix: run docker-compose directly inside github runner workspace
+[33m5fa4042[m fix: run docker-compose directly inside github runner workspace
+[33me582d1d[m fix: run docker-compose directly inside github runner workspace
+[33m0835a3c[m feat: complete real-time deployment using runner workspace context
+[33m4cf417f[m fix: sync image with ghcr and disable volumes directly from rog
+[33m539ea37[m fix: target runner tags accurately to trigger darin machine
+[33m20217bd[m fix: target runner tags accurately to trigger darin machine
+[33m4384bf4[m fix: bypass git pull credentials issue by using runner checkout copy
+[33m7b1e953[m fix: force docker pull and hard reset git for real-time operation update
+[33m334354f[m fix: remove no-dev flag from composer to preserve faker tool
+[33m82354a9[m fix: set default string length for mysql 8 compatibility
+[33m05f4d54[m fix: re-run deployment after clearing port conflict
+[33m4aa3742[m fix: add chmod 777 for storage and increase db sleep time
+[33mcb34f52[m fix: correct operation path to my-laravel-app
+[33mc4f153c[m fix: correct operation path to my-laravel-app
+[33m2ab3094[m fix: correct operation path to my-laravel-app
+[33m3139761[m fix: correct operation path to my-laravel-app
+[33med33a26[m feat: setup full real-time deployment and fix vendor error
+[33m3c988a9[m verify: automated deployment is active
+[33m0c16d2a[m feat: complete devops assignment pipeline with php-fpm and nginx
+[33me47b849[m feat: complete devops assignment pipeline with php-fpm and nginx
+[33m61c5c3b[m feat: complete devops assignment pipeline with php-fpm and nginx
+[33m712d5f2[m build: fix standalone apache configuration and clean structure
+[33mf9c0ecf[m build: fix standalone apache configuration and clean structure
+[33mc1ca2ba[m fix: explicit lowercase username on main branch
+[33m0038127[m fix: convert repository tag name to lowercase for docker buildx
+[33mfa98133[m Add workflow permissions and deploy configuration
+[33mc71e666[m force github actions to rebuild new image right now
+[33ma839adc[m Fix github actions repository image name configuration
+[33mab07c62[m ops: setup fully automated nginx deployment
+[33m32f72b5[m clean up corrupted characters from dockerfile
+[33m4c6fda8[m force github actions to rebuild new image right now
+[33m432a022[m force clean resolve conflicts
+[33mb981877[m fixed text truncation issue for CHEAT logo
+[33m1b1772f[m forced banner code into main branch for sokch PC
+[33m5da5d79[m added full test code with green banner
+[33mfc3aa88[m added full test code with green banner
+[33mf112a5f[m force trigger change dockerfile
+[33m4ee0e1d[m perfect automation dockerfile setup
+[33mc1fb65e[m Updated the home page design
+[33mf7f1e69[m fix dockerfile key generate issue
+[33m0869c8d[m fix dockerfile key generate issue
+[33m61dc0aa[m fix dockerfile key generate issue
+[33m70488d2[m clean up workflow and delete azure file
+[33m639ed48[m fix branch trigger in deploy.yml
+[33mb0656c8[m add github actions workflow for docker hub
+[33md3710c9[m Add seeder to docker startup
+[33m5ef139f[m Add or update the Azure App Service build and deployment workflow config
+[33m248c7e0[m Add seeder to docker startup
+[33m03e5e7a[m Fix database config structure
+[33m1c208f0[m Fix: include dev dependencies for seeding
+[33m3c71a65[m Reset database to match localhost
+[33m6207ccb[m Fix: use firstOrCreate in Seeder to avoid duplicate error
+[33m7d1b786[m Fix: use firstOrCreate in Seeder to avoid duplicate error
+[33m8ea8ae7[m Fix: use firstOrCreate in Seeder to avoid duplicate error
+[33me71b643[m Fix Subcategory model and view null safety
+[33m6dd8324[m Fix: include dev dependencies for seeding
+[33m4ccfce8[m Add seeder to deployment
+[33m9a1146c[m Update Dockerfile
+[33maf50c18[m[33m ([m[1;31morigin/my-local-changes[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmy-local-changes[m[33m)[m Fix: definitely add pdo_pgsql driver
+[33m03cf2fe[m Optimize Dockerfile and fix GD extension install
+[33me92b7b5[m Fix: Add pdo_pgsql driver to Dockerfile
+[33m256c541[m Add Dockerfile to local changes branch
+[33m8a495f1[m Force HTTPS in AppServiceProvider
+[33ma9624f4[m Update Dockerfile with SQLite support and auto-migration
+[33m8d41ae8[m Force add sqlite database file to main
+[33m780053e[m Sync all files from remote my-local-changes branch
+[33m41b48c7[m Update Dockerfile to include composer install
+[33m847b31a[m Move Dockerfile to root directory
+[33m05492b0[m Final cleanup for PHP deployment
+[33m57be22f[m Initial commit
+[33m57d38fe[m Add all new assets and code files
+[33mc1086ba[m Initial commit
