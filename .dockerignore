@@ -1,3 +1,6 @@
 /vendor
 /node_modules
-.git
+/.env
+/storage/*.key
+/public/storage
+.DS_Store
