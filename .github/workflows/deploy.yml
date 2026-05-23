@@ -1,21 +1,32 @@
-- name: Deploy
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Run Deployment Script
         shell: powershell
         run: |
-          cd C:\Users\sokch\Desktop\my-laravel-app
+          Set-Location -Path "C:\Users\sokch\Desktop\my-laravel-app"
           
-          # ១. ទាញយកកូដថ្មីពី GitHub មកកាន់ Folder លើម៉ាស៊ីន Sokh
+          # 1. ទាញយកកូដថ្មី
           git fetch --all
           git reset --hard origin/main
           
-          # ២. បិទ និងលុបអ្វីៗទាំងអស់ចោល
+          # 2. បិទ Docker
           docker-compose down -v
           
-          # ៣. Build ថ្មីដោយបង្ខំ (គ្មាន Cache)
+          # 3. Build ថ្មី
           docker-compose build --no-cache laravel-app
           
-          # ៤. បើកដំណើរការវិញ
+          # 4. បើកដំណើរការ
           docker-compose up -d
           
-          # ៥. រត់ Migration ដើម្បីកុំឱ្យ Error ដូចមុន
+          # 5. រត់ Migration និង Clear Cache
+          Start-Sleep -Seconds 10
           docker exec local-cms-container php artisan migrate --force
           docker exec local-cms-container php artisan optimize:clear
